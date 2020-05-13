@@ -1,21 +1,121 @@
+input[type="text"] {
+  width: 32px;
+  height: 16px;
+}
+
 body {
-  background-color: #48d1cc;
+  background-color: hsla(173, 21%, 93%, 0.637);
   background-image: url("https://i.pcmag.com/imagery/articles/06A0yVqekWQSdRVJzFou1Ht-22.fit_scale.size_2698x1517.v1575682800.jpg");
+
   padding: 40px;
   font-family: Arial;
-  text-align: left; 
+  text-align: left;
   font-weight: bold;
   font-size: large;
-  color: cyan;
+  color: black;
 }
- 
-input[type=text] {
-  padding: 12px 20px;
+
+input[type="text"] {
+  padding: 6px 10px;
   margin: 8px 0;
-  box-sizing: border-box;
+  width: fit-content;
 }
- 
+
+div {
+  background-color: lightseagreen;
+}
+
 label {
   font-weight: bold;
 }
- 
+
+legend,
+label {
+  margin-top: 0.5em;
+  margin-right: 0em;
+  margin-left: 0em;
+  margin-bottom: 0.2em;
+  color: rgb(0, 0, 0);
+}
+
+input[type="button"] {
+  width: auto;
+  margin-left: 15em;
+  display: block;
+}
+
+.title h1 {
+  margin-top: 25em;
+  color: cyan;
+  font-family: "Times New Roman", Times, serif;
+  font-size: 25em;
+}
+
+.title {
+  color: rgb(20, 81, 160);
+  font-family: "Times New Roman", Times, serif;
+}
+
+form {
+  margin-left: 0em;
+}
+
+button[text="clear"] {
+  height: 25em;
+  width: 100%;
+}
+
+p.left {
+  text-align: left;
+  color: aquamarine;
+}
+
+.radio {
+  font-size: 20em;
+  font-weight: 400;
+  text-transform: capitalize;
+  display: block;
+
+  color: #00aeef;
+  position: relative;
+  padding-left: 0em;
+}
+
+.radio + .radio {
+  margin-left: 20em;
+}
+
+.radio input[type="radio"] {
+  display: none;
+}
+
+.radio {
+  height: 20em;
+  width: 20em;
+  border-radius: 50%;
+  border: 3em solid #00aeef;
+  display: block;
+  position: relative;
+  left: 0;
+  top: 6em;
+}
+
+.radio :after {
+  content: "";
+  height: 6em;
+  width: 6em;
+  background: #00aeef;
+  display: block;
+  position: absolute;
+  left: 40%;
+  top: 40%;
+
+  transform: translate(-50%, -50%) scale(0);
+
+  border-radius: 40%;
+  transition: 300ms ease-in-out 0s;
+}
+
+.radio input[type="radio"]:checked ~ :after {
+  transform: translate(-40%, -40%) scale(1);
+}
