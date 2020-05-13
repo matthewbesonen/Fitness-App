@@ -4,6 +4,7 @@ import Button from "./Button.js";
 import Radio from "./Radio.js";
 import ReactDOM from 'react-dom';
 import axios from 'axios';
+import Api from "./Api";
  
 class App extends React.Component {
   constructor(props) {
@@ -70,14 +71,6 @@ class App extends React.Component {
   }
  
   handleSubmit(event) {
-    //Kayne Rest API fun
-    fetch("https://api.kanye.rest/?format=json")
-    .then(response => {
-      return response.json();
-    })
-    .then(data => {
-      alert(data.quote);
-    });
 
     //Printing the state values
     alert("A name was submitted: " + this.state.name +
@@ -159,10 +152,12 @@ class App extends React.Component {
   render() {
     return (
       <div>
-        <h1>Welcome to the Fitness and Calorie Tracker!</h1>
- 
+        <h1>Welcome to the Health and Fitness Calculator!</h1>
+        <p>
+          Please enter some information about yourself to find out your BMI and
+          more.
+        </p>
         <form onSubmit={this.handleSubmit}>
- 
           <label>
             Name:
             <input
@@ -276,6 +271,13 @@ class App extends React.Component {
           />
         </label>
 
+        <label>
+          <br/>
+          <br/>
+          Here are some previews of meals we think you'd enjoy. Follow the link
+          to get the full recipe! 
+        </label>
+        <Api/>
       </div>
     );
   }
