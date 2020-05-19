@@ -17,8 +17,8 @@ class App extends React.Component {
       genderSelectedOption: "",
       unitSelectedOption: "",
       bmi: 0,
-      bmiCategory: ""
-
+      bmiCategory: "",
+      meals: "",
     };
  
     //Binding Handlers
@@ -72,12 +72,28 @@ class App extends React.Component {
  
   handleSubmit(event) {
 
+    fetch("https://www.themealdb.com/api/json/v1/1/random.php")
+      .then((response) => {
+        return response.json();
+      })
+      .then((data) => {
+        if (typeof data === "object") {
+          //console.log({ data });
+          this.setState({
+            meals: data.meals[0].strMeal + "\n" + data.meals[0].strSource,
+          });
+        }
+      });
+
     //Printing the state values
-    alert("A name was submitted: " + this.state.name +
+    window.alert("A name was submitted: " + this.state.name +
           "\nA age was submitted: " + this.state.age +
           "\nA weight was submitted: " + this.state.weight +
           "\nA height was submitted: " + this.state.height +
-          "\nA Gender was submitted: " + this.state.genderSelectedOption
+          "\nA Gender was submitted: " + this.state.genderSelectedOption +
+          "\nHere's a meal we think you'll enjoy! If there's nothing here, hit the submit button again.\n" +
+        "Recipe: " +
+        this.state.meals
           );
     event.preventDefault();
   }
@@ -199,6 +215,7 @@ class App extends React.Component {
  
  
           <div>
+            <p>Please select your Gender</p>
             <Radio
               value="Male"
               label="Male"
@@ -220,6 +237,7 @@ class App extends React.Component {
           </div>
  
           <div>
+            <p>What measurement system are your units in?</p>
             <Radio
               value="Metric"
               label="Metric"
@@ -238,10 +256,11 @@ class App extends React.Component {
             >
               Standard
             </Radio>
+            <br/>
           </div> 
  
           <input type="submit" value="Submit" />
- 
+          
         </form>
  
         <Button text="Clear" onClick={this.handleClear}>
@@ -249,11 +268,12 @@ class App extends React.Component {
         </Button>
  
         <br/>
- 
+        <br/>
+
         <label>
             Body Mass Index:
             <input
-              type="button"
+              type="text"
               onChange={this.calculateBMI(),
                         this.calculateBMICategory()}
               value={this.state.bmi}
@@ -265,7 +285,7 @@ class App extends React.Component {
         <label>
           Resting Metabolic Rate:
           <input
-            type="button"
+            type="text"
             onChange={this.calculateRMR()}
             value={this.calculateRMR()}
           />
