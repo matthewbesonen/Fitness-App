@@ -274,8 +274,7 @@ class App extends React.Component {
             Body Mass Index:
             <input
               type="text"
-              onChange={this.calculateBMI(),
-                        this.calculateBMICategory()}
+              onChange={(this.calculateBMI(), this.calculateBMICategory())}
               value={this.state.bmi}
             />
             <p>You are {this.state.bmiCategory}</p>
